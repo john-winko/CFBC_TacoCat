@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By John Winko</title>
+    <title>Taco Cat: A Coding Project By John Winko</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="img/JW_white.svg" width="30" height="24"
-                    class="d-inline-block align-text-top">&nbsp; The App</a>
+                    class="d-inline-block align-text-top">&nbsp; Taco Cat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Git Repo</a>
+                        <a class="nav-link" href="https://github.com/john-winko/CFBC_TacoCat">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.johnwinko.com">About</a>
@@ -55,20 +55,75 @@
     <!-- === Main Section -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Taco Cat.</h2>
             <div class="row row-cols-1 row-cols-md-2 pt-1">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
                         // Call Hello World
-                        function HelloWorld(){
-                            alert("hello World");
-                        }
+function testPalindrome() {
+    // reset visibility
+    document.getElementById("resultHeader").classList.add("invisible");
+
+    let rawString = document.getElementById("stringValue").value;
+    let result = checkPalindrome(rawString);
+    displayResult(result);
+}
+
+// Make all lowercase (only works with languages that have a lower case)
+function normalizeString(rawString) {
+    rawString = rawString.toLowerCase();
+    let normalString = "";
+    for (let c of rawString) {
+        if (c != c.toUpperCase()) { // is a letter
+            normalString += c;
+        }
+    }
+    return normalString;
+}
+
+// Test first/last letters each iteration, returns false if any set doesn't match
+function isPalindrome(testString) {
+    let normalString = Array.from(testString);
+    while (normalString.length > 1) {
+        let start = normalString.shift();
+        let end = normalString.pop();
+        if (start != end) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Returns whether the string is palindrome and provides some custom text by return an object
+function checkPalindrome(testString) {
+    let returnObj = {};
+    let normalString = normalizeString(testString);
+    returnObj.isPalindrome = isPalindrome(normalString);
+    returnObj.msg = `${returnObj.isPalindrome ? "Yes" : "No"}, &quot;${testString}&quot; is ${returnObj.isPalindrome ? "" : "not "}a palindrom.`;
+    returnObj.header = `${returnObj.isPalindrome ? "Well Done!" : "Sorry!"}`;
+    return returnObj;
+}
+
+// Display result on screen
+function displayResult(result) {
+    document.getElementById("resultHeader").classList.remove("invisible");
+    document.getElementById("resultHeader").innerHTML = result.header;
+    document.getElementById("resultMessage").innerHTML = result.msg;
+}
                     </code></pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The code is structured in four function</p>
+                    <h5>testPalindrome()</h5>
+                    <p>Entry point from hitting the submit button. Calls necessary functions to test if input string is a palindrome and displays the results to screen.</p>
+                    <h5>normalizeString()</h5>
+                    <p>Converts raw string to lowercase then checks if the lowercase and uppercase values are different (valid for most latin based languages). If they are the same then it is not a valid character and it is discarded.</p>
+                    <h5>isPalindrome()</h5>
+                    <p>Test the first and last letters of the string for a match. Discards each then repeats until no more letters are left. If any mismatch is found, returns false.</p>
+                    <h5>checkPalindrome()</h5>
+                    <p>Returns an object with values for a message and header based on if the string input was a palindrome. (Used for screen display purposes)</p>
+                    <h5>displayResult()</h5>
+                    <p>Updates HTML to display the result</p>
                 </div>
             </div>
         </div>
@@ -90,22 +145,22 @@
                 <div class="col d-flex align-items-center justify-content-center justify-content-lg-end">
                     <div class="row">
                         <div class="col social">
-                            <a href="#" target="_blank">
+                            <a href="https://www.linkedin.com/in/john-winko/" target="_blank">
                                 <i class="fab fa-linkedin fa-2x"></i>
                             </a>
                         </div>
                         <div class="col social">
-                            <a href="#" target="_blank">
+                            <a href="https://github.com/john-winko" target="_blank">
                                 <i class="fab fa-github fa-2x"></i>
                             </a>
                         </div>
                         <div class="col social">
-                            <a href="#" target="_blank">
+                            <a href="https://twitter.com/JohnWinko" target="_blank">
                                 <i class="fab fa-twitter fa-2x"></i>
                             </a>
                         </div>
                         <div class="col social">
-                            <a href="#" target="_blank">
+                            <a href="https://www.facebook.com/john.winko" target="_blank">
                                 <i class="fab fa-youtube fa-2x"></i>
                             </a>
                         </div>
